@@ -1,9 +1,4 @@
-# Continue the current Whisker Watch build
-
-Next. Read `AGENTS.md`, `docs/SCOPE_CLARIFICATIONS.md`, and `DESIGN_STATE.md`, then inspect the current working tree and recent changes. Continue from the actual checkpoint; do not rebuild completed work or discard uncommitted changes.
-
-If the previous ordinary phase is complete and its required checks passed, this message authorizes the next ordinary phase in the established sequence. If the last phase was interrupted, finish it first. A pending G0 design approval or required human feel pass still needs my explicit decision/feedback; identify the exact outstanding gate instead of treating this generic continuation as that approval.
-
-Implement the authorized phase completely, run relevant checks, and fix defects introduced in it. Preserve the complete five-map target, source-defined mechanics, PDF/notes-to-deck workflow, original graphics, and portable save guarantee.
-
-At the checkpoint update `DESIGN_STATE.md`, the decision register if needed, and the acceptance matrix. Report real changes, actual check results, remaining limitations, recommended effort for the next phase, and the exact next instruction. Respect the original phase gates. Do not deploy.
+# Continue autonomous game implementation
+Open the LATEST implementation branch, not the old setup commit if newer game code exists. Read AGENTS.md, WHISKER_WATCH_MASTER_PROMPT.md V2, docs/DECISIONS.md, DESIGN_STATE.md and docs/ACCEPTANCE_MATRIX.md. Inspect git status, last commit, actual runnable code and unresolved tests.
+Resume the first incomplete engineering stage, making code and tests rather than only a roadmap. Continue normal stages independently. Preserve the single multiple-choice JSON input, correct/wrong question counts, all cats and paths immediately available, questions before waves only, combat-time purchasing/upgrading, real enemy economy, finished original artwork, five maps, Quick and Full modes, and one exact self-contained JSON save.
+Run build/tests and seeded actual-engine simulations, fix defects, update DESIGN_STATE.md and acceptance evidence, commit, and continue within task limits. Never publicly deploy before the owner's explicit approval.

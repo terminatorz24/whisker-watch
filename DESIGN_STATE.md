@@ -1,63 +1,31 @@
-# Whisker Watch - design and execution state
+# Whisker Watch — DESIGN_STATE (V2)
+As of 2026-10-22. Branch: codex/workspace-setup-2026-10-22. Game implementation status: NOT STARTED. This is the setup handoff, not a passing game build.
 
-Last updated: October 22, 2026.
+## Canonical instructions
+- WHISKER_WATCH_MASTER_PROMPT.md rewritten for the current owner-approved direction.
+- docs/DECISIONS.md distinguishes confirmed requirements from proposals.
+- docs/DECK_FORMAT.md + docs/AI_FORMATTER_PROMPT.md establish single study JSON contract.
+- docs/ECONOMY_MODEL.md contains preliminary answer/cash/streak simulations, explicitly not a tested tower economy.
+- docs/ART_PIPELINE.md directs original game assets and optional plugin integrations.
+- docs/ACCEPTANCE_MATRIX.md: all game requirements NOT IMPLEMENTED.
+- references/ includes a guide and 13 original unmodified excerpts from a broader 71-page PDF.
 
-## Current state
+## Owner-confirmed essentials
+Single-player cat tower defense with mice/rats, static original map scenery, animated gameplay objects, no sound, five immediately playable maps plus Tutorial, Easy/Normal/Hard, Full/Quick, questions before each wave, combat-time shop/selling/upgrades/abilities, all cats and upgrade paths available, one multiple-choice JSON deck input, strict formatter from external AI, cash for correct answers and pop events, a bounded answer streak, and one self-contained downloadable JSON save preserving full live state and correct/incorrect counts. Owner must authorize publication.
 
-- Stage: WORKSPACE PREPARATION.
-- Game implementation: NOT STARTED.
-- Current implementation phase: none; next is A1.
-- Canonical specification baseline: `0e10b8806c9d967db4c116a8d82da6620dc4e808`, `WHISKER_WATCH_MASTER_PROMPT.md`.
-- Scope update: `docs/SCOPE_CLARIFICATIONS.md`.
-- Setup branch: `codex/workspace-setup-2026-10-22`.
-- Codex Cloud environment: not confirmed created or published by this file.
+## Proposals awaiting actual balance evidence
+Full question schedule 5/7/9/11/12 with +3 bosses; Quick 2/3 with +2 bosses; lives 200/150/100; tower costs 85%/100%/108%; speeds 90%/100%/115%; cash start 650; study wave budgets; combat/clear income targets; threshold streak +5/10/15/20%; 70% sell return; minimum question counts; Fisher/Scholar caps; final count of three candidate extra cats.
+These are NOT described as final owner-approved numeric facts. Codex should make values configurable, test using the real simulation and record tuned values.
 
-## Prepared handoff material
+## Preparation verification
+- Original GitHub branch previously contained only setup docs, master and reference images.
+- V2 rewrite adds authoritative docs and replaces conflicting build instructions. Game runtime, art assets, tests and saves have not yet been built.
+- Do not claim Mac/iPhone testing; those checks await a game build.
+- Codex Cloud connection/environment not confirmed configured or published in the user's account.
+- Default/main branch deliberately unchanged.
 
-- Repository instructions and source-reading order in `AGENTS.md`.
-- Workspace guide and a setup-only capability check script.
-- Starting, continuing, fixing, and reviewing prompts.
-- Clarified five-map completion target and PDF/notes-to-deck workflow.
-- Proposed decision register, with no implementation decisions falsely marked approved.
-- Acceptance matrix; all game requirements remain NOT IMPLEMENTED.
-- Selected original visual references and their extraction metadata.
+## Autonomous implementation checklist / next task
+Start prompts/01_START_AUTONOMOUS_BUILD.md using this branch. Confirm branch and source availability; run bash scripts/codex-setup.sh; then immediately implement the single JSON deck contract and start the playable tower-defense engine, continuing through ordinary milestones without separate routine owner approvals. Keep the project compiling at each milestone. At limitations leave a complete handoff in this file.
 
-## Build sequence and gates
-
-| Stage | Work | Status / gate |
-| --- | --- | --- |
-| A1 | Deck spec, schema, templates, documentation, configured limits | NOT STARTED; initial launch prompt authorizes this phase |
-| A2 | Shared validator, CLI, report component, fixtures | Await A1 completion and owner `next` |
-| A3 | Import, mapping, edit preview, Split and Convert | Await prior phase and owner `next` |
-| A4 | Formatter/repair prompts, guides, deck picker wiring | Await prior phase and owner `next` |
-| A5 | Correct demo decks and stress/boundary fixtures | Await prior phase and owner `next` |
-| G0 | Architecture and complete design review | Await Part B launch; owner approves design before G1 |
-| G1 | Playable 20-wave slice and complete study/save loop | Owner feel pass required |
-| G2 | All cats, paths, upgrades, abilities, shop | Original phase gate |
-| G3 | Full enemies, bosses, 100 waves and balance | Owner feel pass required |
-| G4 | Tutorial and first-map finishing | Original phase gate |
-| G5 | Progression, perks, reports, settings and Casual | Original phase gate |
-| G6 | Integration, mobile, final tests and simulation | Original phase gate |
-| G7 | Static package and deployment instructions | Owner feel pass; deployment separately authorized |
-| M2-M5 | Remaining four maps, one at a time | Each map gets its approval and verification gate |
-| Final review | Entire five-map target and source checklist | Not complete until all required content is implemented and evidence reviewed |
-
-## Approved decisions
-
-The latest owner clarifications in `docs/SCOPE_CLARIFICATIONS.md` are the known scope. No other proposals in `docs/DECISION_REGISTER.md` have been approved. Record future approvals with the decision, date, affected source rule, and the owner's actual instruction.
-
-## Verification log
-
-Game tests: NOT RUN. There is no game implementation at this stage.
-
-Workspace preparation checks must be recorded separately from game tests. Do not infer a working game from the presence of a setup script, documentation, or reference screenshots.
-
-Preparation verification completed: original source text preserved; 13 reference image hashes match; local Markdown links resolve; shell syntax and setup-only command pass in the preparation runtime. Details and unverified account-side steps: `docs/PREPARATION_REPORT.md`.
-
-## Next exact task
-
-After environment preparation, the owner gives Codex `prompts/01_START_PART_A.md`. Codex reads the sources, verifies the workspace, and implements A1. It then reports actual files/checks and waits for `next`, as the master requires.
-
-## Continuation protocol
-
-At each implementation checkpoint update: current phase; files changed; commands actually run and outcomes; resolved decisions; remaining defects and manual checks; gate awaiting owner response; next file/task. Do not erase this source/history context when updating progress.
+## Per-checkpoint log template
+Date and branch; actual commit; stage; files changed; shell commands run and observed results; scenario tests and screenshots; PASS/FAIL/MANUAL status per acceptance requirement; unresolved defects; recommended next build task; owner-deployment permission status.

@@ -1,44 +1,38 @@
-# Whisker Watch: instructions for Codex
+# CODEX AGENT INSTRUCTIONS — WHISKER WATCH V2
 
-## Task boundaries
+Codex is the implementation agent. The user will send an autonomous-build prompt from their Mac to Codex Cloud. This repository contains the confirmed product direction and PROVISIONAL economy/art recommendations; it does not contain a functioning game yet. When an autonomous build task begins, IMPLEMENT THE GAME rather than only planning it.
 
-This repository is being prepared for Codex to implement the game. Setup work consists of instructions, references, environment checks, and handoff prompts. A setup-only request does not authorize game implementation. The owner starts implementation with `prompts/01_START_PART_A.md`.
+## Required read order
+1. WHISKER_WATCH_MASTER_PROMPT.md (entire active canonical V2 specification)
+2. docs/DECISIONS.md (confirmed vs provisional)
+3. docs/DECK_FORMAT.md and docs/AI_FORMATTER_PROMPT.md
+4. docs/ECONOMY_MODEL.md and docs/ART_PIPELINE.md
+5. references/REFERENCE_GUIDE.md and actual reference images
+6. DESIGN_STATE.md, docs/ACCEPTANCE_MATRIX.md
+7. User's supplied task in prompts/01_START_AUTONOMOUS_BUILD.md or current continuation instructions
 
-## Read before working
+Latest owner message outranks these files. Git history is not a competing instruction source; older versions of the specification are obsolete. Do not reintroduce unrelated legacy feature systems while implementing the active design.
 
-1. `docs/SCOPE_CLARIFICATIONS.md` for the owner's latest requirements.
-2. `WHISKER_WATCH_MASTER_PROMPT.md` in full for the original detailed specification.
-3. `DESIGN_STATE.md` for the current phase, completed work, decisions, and next task.
-4. The relevant entry in `prompts/`, plus `docs/DECISION_REGISTER.md` and `docs/ACCEPTANCE_MATRIX.md`.
-5. `references/REFERENCE_GUIDE.md`; visually inspect its images before UI/art work.
+## Product guardrails
+- Browser-based single-player original cat/mouse/rat tower defense; protect Fish Stash.
+- Five immediately playable main maps + Tutorial. Two lengths Quick 40 / Full 100, Easy/Normal/Hard, original bosses/waves.
+- Multiple choice ONLY. One validated canonical study-deck upload format: UTF-8 JSON; allow file or paste JSON. External AI converts PDFs/notes via our prompt; the game does not parse source PDFs.
+- Question breaks before EVERY wave; NEVER while combat runs. No inter-wave countdown. Combat continues while player shops, places, upgrades, sells and activates cats. Answer accuracy must remain the strongest source of money.
+- ALL cats and path options available from the beginning, subject to tower costs, placement and crosspath restrictions. No required permanent unlocking/achievement meta system.
+- Exact downloadable JSON SAVE embedding the study deck; it restores correct/wrong statistics, study cursor and the entire tick-level game state even during combat.
+- Colorful original BTD6-inspired readable 2D illustration quality. No copied BTD6 assets/routes and no game sound. Production artwork must be shipped in the asset manifest; do not ship references.
+- Static build/offline operation, responsive Mac/iPhone interaction, valid error handling. No backend, user login, paid external service or required image-generation subscription.
 
-The owner's current instructions take priority. Scope clarifications take priority over the old release wording. Proposed resolutions in the decision register are not approved decisions. Preserve the original master file as a historical source; record approved changes separately.
+## How to work autonomously
+- User wants the project built with minimal routine oversight. Advance through normal stages independently; do not stop after every engineering phase to request 'next'. Owner retains final product review and must authorize public deployment separately.
+- Inspect actual tools first. This chat's Canva/Higgsfield integrations are not necessarily available in your Codex Cloud environment. Create original SVG/code-rendered assets and test screenshots yourself when generative tools are unavailable. Do not buy external credits.
+- Implement source files and runnable code, not mock plans. Use simulation/game/render/deck/save/UI modules and data-driven art/content, fixed-step deterministic engine, seeded question shuffle, and shared economy logic.
+- Keep a useful playable slice during expansion. Test, update DESIGN_STATE.md and docs/ACCEPTANCE_MATRIX.md at milestones, record factual limitations, use branches and small commits, and continue until the task limit. At a runtime/context limit, leave a precise next-command checkpoint and resume in the next authorized coding task.
+- Do not overwrite unknown uncommitted changes. Do not weaken network/access settings, invent test results, or publish before permission. Mark real-device iPhone tests MANUAL CHECK NEEDED if the device is unavailable.
 
-## Product essentials
+## Preparation check
+Run from project root: bash scripts/codex-setup.sh.
+This only checks tools/source files. It does not validate gameplay. After a Node package manifest exists, record real install/build/test commands in README and run them.
 
-- Build a real, original browser tower-defense game: cats defend a Fish Stash against layered mice and rats. Study answers power the economy.
-- Complete delivery includes five main maps plus the Tutorial, Easy/Normal/Hard, all 16 cats and 240 upgrades, 100 waves, five bosses, the full deck workflow, progression, and portable save/resume. The one-map release is an intermediate milestone.
-- Any subject and any valid uploaded deck can be used on any main map. No finance-specific game theme.
-- Content workflow: source PDF/notes -> external formatter with the provided prompt -> validated JSON/CSV deck -> gameplay. Do not silently add in-game AI, OCR, or arbitrary-PDF parsing.
-- A deck describes questions; a JSON save preserves progress and optionally embeds the deck. A PDF is not a resumable save. See the original file-format and size requirements.
-- Everything runs on-device. No accounts, backend, server uploads, analytics, cloud saves, paid services, or API keys are required by this scope.
-- File-based saves are authoritative. Implement the exact-resume guarantee, including mid-wave and partial study-break state. Browser crash recovery is an explicit opt-in exception, default off.
-- Visual quality is a completion criterion. Use consistent original cat/rat silhouettes, scenery, readable HUD, feedback, and coherent vector or sprite assets. Reference screenshots are for inspection, not production assets.
-
-## Execution and verification
-
-- Follow A1-A5, G0-G7, then the four remaining map phases. Preserve the master's phase `next` gates, G0 design approval, and human feel passes unless the owner explicitly changes them. Start the current authorized phase immediately; do not ask a redundant kickoff question.
-- Make actual files and runnable code during implementation. Do not substitute a plan, landing page, mockup, fake controls, or fabricated test results for the requested deliverable.
-- Keep simulation, rendering, learning, persistence, content, and UI boundaries clear. Use the same deterministic simulation in the game and headless balance tests.
-- Use the master's seeded streams and fixed ticks. Keep gameplay tuning out of engine literals. Decide the single ownership of numeric values at G0.
-- Treat decks and saves as untrusted input. Render question text as text, validate before loading, and never execute file-provided code.
-- Run the checks relevant to the changed phase. Distinguish `PASS`, `FAIL`, `NOT IMPLEMENTED`, `BLOCKED`, and `MANUAL CHECK NEEDED`. A tool being installed is not a passing test. Browser emulation is not proof of real iPhone Safari behavior.
-- Use available subagents for independent tasks when helpful, with distinct file ownership and integration review. Do not assume delegation exists or change model settings automatically.
-- At a checkpoint update `DESIGN_STATE.md`, the acceptance matrix, decisions, exact verification results, and next prompt. Preserve working files and the user's uncommitted changes. Stop at a coherent boundary if context or task limits require a continuation.
-- Prepare the static deployment package; publish only when the owner explicitly authorizes deployment. Do not weaken access or approval settings.
-
-## Current commands
-
-Workspace preparation: `bash scripts/codex-setup.sh`.
-
-There is no game package manifest, game runtime, or game test command at this preparation stage. Codex must establish and document the real development, build, test, and simulation commands during implementation. Never report an invented command as executed.
+## Acceptance
+Use docs/ACCEPTANCE_MATRIX.md. Only mark PASS with actual runnable behavior and evidence. Before completion verify both run lengths, all real maps and cats, all attack/upgrades/abilities, answer economy, repeat-question handling, deterministic exact save/resume, validation, full reports and complete original graphics. Build release files but do not deploy.

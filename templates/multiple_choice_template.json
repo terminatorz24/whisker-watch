@@ -1,0 +1,44 @@
+{
+  "deckFormat": 1,
+  "deckType": "multiple_choice",
+  "deckId": "replace-with-your-deck-id",
+  "title": "Example multiple-choice question deck",
+  "questions": [
+    {
+      "id": "q001",
+      "topic": "Example only",
+      "question": "Which object orbits Earth?",
+      "answer": "The Moon",
+      "wrong": [
+        "Mars",
+        "Jupiter",
+        "Venus"
+      ],
+      "explanation": "The source notes that the Moon is Earth's natural satellite."
+    },
+    {
+      "id": "q002",
+      "topic": "Example only",
+      "question": "What is the chemical symbol for oxygen?",
+      "answer": "O",
+      "wrong": [
+        "Ox",
+        "Og",
+        "N"
+      ],
+      "explanation": "The source lists oxygen with the chemical symbol O."
+    },
+    {
+      "id": "q003",
+      "topic": "Example only",
+      "question": "How many degrees are in a right angle?",
+      "answer": "90",
+      "wrong": [
+        "45",
+        "60",
+        "180"
+      ],
+      "explanation": "The source defines a right angle as 90 degrees."
+    }
+  ]
+}
