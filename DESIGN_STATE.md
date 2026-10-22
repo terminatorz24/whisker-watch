@@ -24,8 +24,11 @@ These are NOT described as final owner-approved numeric facts. Codex should make
 - Codex Cloud connection/environment not confirmed configured or published in the user's account.
 - Default/main branch deliberately unchanged.
 
-## Autonomous implementation checklist / next task
-Start prompts/01_START_AUTONOMOUS_BUILD.md using this branch. Confirm branch and source availability; run bash scripts/codex-setup.sh; then immediately implement the single JSON deck contract and start the playable tower-defense engine, continuing through ordinary milestones without separate routine owner approvals. Keep the project compiling at each milestone. At limitations leave a complete handoff in this file.
+## Mandatory pre-build access and owner approval — PENDING
+The owner explicitly requires a preflight report and one-time permission before implementation. Codex Cloud access has NOT yet been verified. No Codex Cloud preflight report has been produced, and owner APPROVE BUILD has NOT been given. See docs/PREFLIGHT_ACCESS_CHECK.md. A prepared GitHub branch and this ChatGPT's connectors cannot prove GitHub write/plugin permissions inside Codex Cloud.
+
+## Next task
+Open prompts/01_START_AUTONOMOUS_BUILD.md in Codex Cloud on the V2 branch, perform the full access/connector/source/art-tool preflight, show owner detailed actual results, ASK for explicit APPROVE BUILD, then STOP without game code. After actual approval, record the date/report/exceptions here, implement the single JSON deck contract and tower-defense engine, and continue ordinary engineering milestones autonomously. Keep the project compiling at each milestone. At limitations leave a complete handoff in this file.
 
 ## Per-checkpoint log template
 Date and branch; actual commit; stage; files changed; shell commands run and observed results; scenario tests and screenshots; PASS/FAIL/MANUAL status per acceptance requirement; unresolved defects; recommended next build task; owner-deployment permission status.

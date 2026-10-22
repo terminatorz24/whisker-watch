@@ -1,5 +1,5 @@
 # CODEX CLOUD: START AUTONOMOUS WHISKER WATCH IMPLEMENTATION
-I own Whisker Watch. You are the implementation agent. This prompt authorizes real coding, not just plans or environment setup.
+I own Whisker Watch. You are the implementation agent. This prompt authorizes an ACCESS AUDIT FIRST. It does not authorize any game coding until I review your preflight report and explicitly reply APPROVE BUILD. After that approval, it authorizes real implementation.
 
 Repository: terminatorz24/whisker-watch
 Starting branch: codex/workspace-setup-2026-10-22, or the latest active implementation branch if already started.
@@ -7,11 +7,22 @@ Starting branch: codex/workspace-setup-2026-10-22, or the latest active implemen
 CRITICAL CHECKOUT GUARD
 GitHub's default branch is main, which does NOT contain the approved V2 handoff. Before reading instructions or writing game code, verify your checked-out branch and the V2 marker in AGENTS.md. If you are on main or the V2 file is missing: check git status; preserve any uncommitted changes; fetch origin codex/workspace-setup-2026-10-22; switch safely to that source branch or create a new implementation branch FROM it; confirm current commit descends from 4323888da0fdfe458911bf088caa45c0bd1ada71. If access/checkout is blocked, report the exact issue and do not build against the old main spec. Never force reset, change default branch, or silently merge the old draft.
 
+MANDATORY PREFLIGHT — CHECK WITH THE OWNER BEFORE CODING
+Read docs/PREFLIGHT_ACCESS_CHECK.md in full and execute its audit FIRST. It overrides every sentence below that could otherwise imply immediate implementation.
+- Check GitHub source branch/commit and real read, branch-create, commit and PUSH permissions from THIS Codex Cloud environment. The default main is obsolete. Use the specified V2 branch or a branch descended from it, safely.
+- Verify that all canonical project documents and the multiple-choice JSON template can actually be read and validated, and that thirteen reference images exist and can be visually inspected. Note whether the COMPLETE reference PDF is separately available; do not assume it is.
+- Run the repository preparation script, inspect Git/Node/npm/Python, shell/filesystem, package access, and the available routes for automated browser checks, graphic asset creation, and eventual local/Mac/iPhone testing.
+- Check Canva, Higgsfield and any other actual plugin access within THIS Codex task; do not assume connected apps in another ChatGPT chat transfer here. Mark optional limitations and original SVG fallback honestly; do not consume credits or purchase anything.
+- Report PASS / FAIL / UNVERIFIED for required tools and permissions with ACTUAL evidence, and AVAILABLE / UNAVAILABLE for optional plugins and full archive. Say what you cannot test and what the owner must do to fix gaps.
+- When the preflight report is complete, clearly state that NO game implementation has started. Ask me: "Do you approve starting implementation with the verified access and listed fallbacks? Reply APPROVE BUILD or tell me what to fix."
+- HARD STOP. Wait for my explicit post-report approval even if all access checks pass. A previous message saying "start" or this pasted startup prompt is NOT that approval. If core access is blocked, do not code.
+- Only after I explicitly approve: record the report/approval in DESIGN_STATE.md and execute the autonomous coding instructions below. Work without routine interruptions and do NOT publicly deploy.
+
 PRIMARY INSTRUCTIONS
 1. Inspect branch, HEAD, uncommitted changes and repository sources; preserve working files.
 2. Read AGENTS.md, WHISKER_WATCH_MASTER_PROMPT.md (current V2 in full), docs/DECISIONS.md, docs/ECONOMY_MODEL.md, docs/DECK_FORMAT.md, docs/AI_FORMATTER_PROMPT.md, docs/ART_PIPELINE.md, references/REFERENCE_GUIDE.md, DESIGN_STATE.md and docs/ACCEPTANCE_MATRIX.md. Visually inspect relevant reference images.
 3. Confirm that the current V2 source supersedes all older text in the repository's history. Never import obsolete previous requirements.
-4. Run bash scripts/codex-setup.sh, report real environment tools, then immediately begin implementing the game.
+4. Run bash scripts/codex-setup.sh during preflight; show the owner actual tool access and results; do NOT code before their approval.
 5. Keep work on an appropriate implementation branch with usable verified incremental commits.
 
 THE GAME TO SHIP
@@ -27,7 +38,7 @@ Make premium-looking original outlined and lightly shaded 2D sprites, original f
 Maintain deterministic fixed-tick engine, replay equivalence, full mid-wave and mid-study save tests, malformed deck/save rejection, actual browser/responsive checks, and all interactive UI controls. If iPhone Safari tests are unavailable, report MANUAL CHECK NEEDED, not PASS.
 
 AUTONOMOUS EXECUTION
-I want you to carry through normal coding stages independently without asking me to say next after each stage. Build a playable slice, implement remaining mechanics and artwork, test, fix and continue. Use available subagents when beneficial; preserve independent module boundaries and review integration. Keep source compileable; update DESIGN_STATE.md and docs/ACCEPTANCE_MATRIX.md with precise evidence and commit at checkpoints. When the task budget is exhausted, leave the exact repo branch/commit/state and next command for a continuation task. Do not restart from scratch next time.
+AFTER I explicitly approve the completed preflight, carry through normal coding stages independently without asking me to say next after each stage. Build a playable slice, implement remaining mechanics and artwork, test, fix and continue. Use available subagents when beneficial; preserve independent module boundaries and review integration. Keep source compileable; update DESIGN_STATE.md and docs/ACCEPTANCE_MATRIX.md with precise evidence and commit at checkpoints. When the task budget is exhausted, leave the exact repo branch/commit/state and next command for a continuation task. Do not restart from scratch next time.
 Do not claim the game finished if maps, upgrades, graphics or saves are incomplete. Do not publicly deploy until I have played and explicitly approved the final game.
 
-START NOW: verify the sources, implement the validated JSON question workflow, then the first genuinely playable tower-defense slice and proceed toward the entire game.
+START NOW WITH THE ACCESS AUDIT AND OWNER APPROVAL REQUEST ONLY. STOP AFTER REPORTING. After I reply APPROVE BUILD, implement the validated JSON question workflow, then the first genuinely playable tower-defense slice and proceed toward the entire game.

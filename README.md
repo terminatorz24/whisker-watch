@@ -7,8 +7,8 @@ An original cat-vs-mice/rats tower-defense study game inspired by the strategic 
 ## For the owner — from Mac to Codex Cloud
 1. Choose this repository and starting branch: terminatorz24/whisker-watch, codex/workspace-setup-2026-10-22. CRITICAL: GitHub's default main branch still has the obsolete specification; verify the V2 checkout. The startup prompt contains a safe checkout guard if the environment starts on main.
 2. Configure a private Codex Cloud environment and ensure it reads AGENTS.md. See docs/CODEX_WORKSPACE_SETUP.md.
-3. Paste the complete directive in prompts/01_START_AUTONOMOUS_BUILD.md into a coding task.
-4. Let Codex work through regular implementation stages autonomously; final public deployment requires your explicit approval.
+3. Paste prompts/01_START_AUTONOMOUS_BUILD.md into a coding task. It MUST perform docs/PREFLIGHT_ACCESS_CHECK.md first and STOP to show you the actual GitHub, source, reference, tool and connector access report. No game code is written yet.
+4. Review the preflight report. Fix blocked access or decide whether optional external art plugins / full source PDF are necessary. Then reply APPROVE BUILD in Codex. ONLY then it may work through regular implementation stages autonomously; final public deployment requires another explicit approval.
 5. If a coding task ends with further work required, give prompts/02_CONTINUE.md to a new task that uses the latest implementation branch and DESIGN_STATE.md.
 
 ## Active documents
@@ -19,6 +19,7 @@ An original cat-vs-mice/rats tower-defense study game inspired by the strategic 
 - docs/DECK_FORMAT.md, docs/AI_FORMATTER_PROMPT.md — one input deck type: multiple-choice JSON.
 - templates/multiple_choice_template.json — non-playable tiny example; expand to meet selected game's minimum.
 - docs/ART_PIPELINE.md, references/REFERENCE_GUIDE.md and references/images/ — graphics production requirements and design references.
+- docs/PREFLIGHT_ACCESS_CHECK.md — mandatory owner-reviewed Codex Cloud tool/source/plugin access gate before implementation.
 - docs/ACCEPTANCE_MATRIX.md — full project coverage and verification log.
 - DESIGN_STATE.md — durable progress checkpoint.
 - docs/CODEX_WORKSPACE_SETUP.md — environment setup.

@@ -12,7 +12,7 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
  echo "HEAD:"; git rev-parse HEAD
  echo "Working-tree changes:"; git status --short
 fi
-for path in AGENTS.md WHISKER_WATCH_MASTER_PROMPT.md DESIGN_STATE.md docs/DECISIONS.md docs/ECONOMY_MODEL.md docs/DECK_FORMAT.md docs/AI_FORMATTER_PROMPT.md docs/ART_PIPELINE.md docs/ACCEPTANCE_MATRIX.md docs/CODEX_WORKSPACE_SETUP.md prompts/01_START_AUTONOMOUS_BUILD.md templates/multiple_choice_template.json references/REFERENCE_GUIDE.md references/images/extraction-manifest.json; do
+for path in AGENTS.md WHISKER_WATCH_MASTER_PROMPT.md DESIGN_STATE.md docs/DECISIONS.md docs/ECONOMY_MODEL.md docs/PREFLIGHT_ACCESS_CHECK.md docs/DECK_FORMAT.md docs/AI_FORMATTER_PROMPT.md docs/ART_PIPELINE.md docs/ACCEPTANCE_MATRIX.md docs/CODEX_WORKSPACE_SETUP.md prompts/01_START_AUTONOMOUS_BUILD.md templates/multiple_choice_template.json references/REFERENCE_GUIDE.md references/images/extraction-manifest.json; do
  if [[ -s "$path" ]]; then echo "PRESENT: $path"; else echo "MISSING: $path"; missing=1; fi
 done
 if command -v python3 >/dev/null 2>&1; then

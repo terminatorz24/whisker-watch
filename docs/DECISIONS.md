@@ -2,6 +2,7 @@
 Updated 2026-10-22. This is the only active decision register. Do not revive historic choices from older commits.
 
 ## CONFIRMED by the owner
+- Before Codex first implements game code, it MUST verify actual GitHub read/write, correct V2 branch, required sources/references, local development tools, asset-authoring route and optional connector access in its own environment, show the report to the owner, and WAIT for explicit post-report APPROVE BUILD. After approval ordinary stages can run autonomously; public release still requires separate approval.
 - Original cat tower-defense against varied mice and rats, guarding a Fish Stash or similar objective. Gameplay and visual usability strongly inspired by Bloons TD 6, but all art and distinct expressive elements original.
 - Five real playable maps plus tutorial. Main maps available immediately; additional maps may arrive in later updates.
 - Two lengths: a shorter Quick Run and 100-wave Full Campaign. Exact Quick wave count and boss balance are initial recommendations; user liked the separation.

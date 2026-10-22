@@ -1,6 +1,12 @@
 # CODEX AGENT INSTRUCTIONS — WHISKER WATCH V2
 
-Codex is the implementation agent. The user will send an autonomous-build prompt from their Mac to Codex Cloud. This repository contains the confirmed product direction and PROVISIONAL economy/art recommendations; it does not contain a functioning game yet. When an autonomous build task begins, IMPLEMENT THE GAME rather than only planning it.
+Codex is the implementation agent. The user will send an autonomous-build prompt from their Mac to Codex Cloud. This repository contains the confirmed product direction and PROVISIONAL economy/art recommendations; it does not contain a functioning game yet. When a new build task arrives, conduct the mandatory access audit and STOP for owner approval BEFORE implementing the game. Once the owner approves the audit, implement the game rather than only planning it.
+
+## Mandatory initial access audit — HARD OWNER GATE
+- BEFORE ANY game code, new package installation, scaffolding, sprite production, or gameplay work, follow docs/PREFLIGHT_ACCESS_CHECK.md fully. Verify the real Codex Cloud repository checkout (not the old default main), authenticated Git read/write/branch push, source files, 13 reference images, setup tools, JSON contract, art-creation fallback and available browser/plugin capabilities.
+- Show an evidence-backed access checklist to the OWNER. Identify what is required vs optional (especially Canva/Higgsfield and the full reference PDF). The user requested that you CHECK WITH THEM and wait; DO NOT treat their initial startup prompt as approval.
+- Even if all checks PASS, do not start implementation until the owner explicitly replies APPROVE BUILD after seeing the report. If required access is missing, resolve it and re-audit before requesting approval. No unauthorized credential changes, paid subscriptions or security changes.
+- After approval, record it in DESIGN_STATE.md and then work through normal phases autonomously; do not request repeated routine phase approvals. Final public deployment separately requires owner's explicit approval.
 
 ## Required read order
 1. WHISKER_WATCH_MASTER_PROMPT.md (entire active canonical V2 specification)
@@ -24,14 +30,14 @@ Latest owner message outranks these files. Git history is not a competing instru
 - Static build/offline operation, responsive Mac/iPhone interaction, valid error handling. No backend, user login, paid external service or required image-generation subscription.
 
 ## How to work autonomously
-- User wants the project built with minimal routine oversight. Advance through normal stages independently; do not stop after every engineering phase to request 'next'. Owner retains final product review and must authorize public deployment separately.
+- User wants the project built with minimal routine oversight. AFTER the explicit pre-build approval only, advance through normal stages independently; do not stop after every engineering phase to request 'next'. Owner retains final product review and must authorize public deployment separately.
 - Inspect actual tools first. This chat's Canva/Higgsfield integrations are not necessarily available in your Codex Cloud environment. Create original SVG/code-rendered assets and test screenshots yourself when generative tools are unavailable. Do not buy external credits.
 - Implement source files and runnable code, not mock plans. Use simulation/game/render/deck/save/UI modules and data-driven art/content, fixed-step deterministic engine, seeded question shuffle, and shared economy logic.
 - Keep a useful playable slice during expansion. Test, update DESIGN_STATE.md and docs/ACCEPTANCE_MATRIX.md at milestones, record factual limitations, use branches and small commits, and continue until the task limit. At a runtime/context limit, leave a precise next-command checkpoint and resume in the next authorized coding task.
 - Do not overwrite unknown uncommitted changes. Do not weaken network/access settings, invent test results, or publish before permission. Mark real-device iPhone tests MANUAL CHECK NEEDED if the device is unavailable.
 
 ## Preparation check
-Run from project root: bash scripts/codex-setup.sh.
+Run from project root: bash scripts/codex-setup.sh as part of docs/PREFLIGHT_ACCESS_CHECK.md, report actual results to owner and await approval.
 This only checks tools/source files. It does not validate gameplay. After a Node package manifest exists, record real install/build/test commands in README and run them.
 
 ## Acceptance
