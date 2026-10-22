@@ -5,7 +5,7 @@ An original cat-vs-mice/rats tower-defense study game inspired by the strategic 
 **Status: specification and Codex handoff prepared. The game has NOT been implemented, tested or deployed.**
 
 ## For the owner — from Mac to Codex Cloud
-1. Choose this repository and starting branch: terminatorz24/whisker-watch, codex/workspace-setup-2026-10-22.
+1. Choose this repository and starting branch: terminatorz24/whisker-watch, codex/workspace-setup-2026-10-22. CRITICAL: GitHub's default main branch still has the obsolete specification; verify the V2 checkout. The startup prompt contains a safe checkout guard if the environment starts on main.
 2. Configure a private Codex Cloud environment and ensure it reads AGENTS.md. See docs/CODEX_WORKSPACE_SETUP.md.
 3. Paste the complete directive in prompts/01_START_AUTONOMOUS_BUILD.md into a coding task.
 4. Let Codex work through regular implementation stages autonomously; final public deployment requires your explicit approval.

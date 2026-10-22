@@ -7,7 +7,7 @@ Starting branch: codex/workspace-setup-2026-10-22
 ## Mac steps
 1. Open Codex (Cloud) from the ChatGPT/Codex interface while signed in.
 2. Select an existing Cloud environment for this repo or Create environment, connecting GitHub if prompted.
-3. Choose the exact Whisker Watch repo and preparation branch if the branch selector is available. Check git branch output if unclear; avoid switching branches while uncommitted work exists.
+3. Choose the exact Whisker Watch repo and preparation branch if the branch selector is available. IMPORTANT: GitHub's default main branch contains the older draft. In setup, verify `git branch --show-current` and that AGENTS.md begins `CODEX AGENT INSTRUCTIONS — WHISKER WATCH V2`. If main was selected, preserve any work, fetch and switch safely to `codex/workspace-setup-2026-10-22` (or create an implementation branch starting from it) BEFORE publishing this environment. If the interface will not preserve the branch selection, the first implementation task MUST perform and verify the same checkout before coding; never build against main.
 4. In environment setup, use bash scripts/codex-setup.sh as a preparation/install script. There is no game dependency manifest yet; do not attempt npm ci before Codex creates one.
 5. Keep the environment private and its existing approval/security settings intact. No API key or paid art platform is needed for initial implementation.
 6. After environment setup, start a separate coding task and paste prompts/01_START_AUTONOMOUS_BUILD.md. This is the autonomous implementation task, not the setup check.

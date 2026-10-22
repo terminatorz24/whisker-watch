@@ -4,6 +4,9 @@ I own Whisker Watch. You are the implementation agent. This prompt authorizes re
 Repository: terminatorz24/whisker-watch
 Starting branch: codex/workspace-setup-2026-10-22, or the latest active implementation branch if already started.
 
+CRITICAL CHECKOUT GUARD
+GitHub's default branch is main, which does NOT contain the approved V2 handoff. Before reading instructions or writing game code, verify your checked-out branch and the V2 marker in AGENTS.md. If you are on main or the V2 file is missing: check git status; preserve any uncommitted changes; fetch origin codex/workspace-setup-2026-10-22; switch safely to that source branch or create a new implementation branch FROM it; confirm current commit descends from 4323888da0fdfe458911bf088caa45c0bd1ada71. If access/checkout is blocked, report the exact issue and do not build against the old main spec. Never force reset, change default branch, or silently merge the old draft.
+
 PRIMARY INSTRUCTIONS
 1. Inspect branch, HEAD, uncommitted changes and repository sources; preserve working files.
 2. Read AGENTS.md, WHISKER_WATCH_MASTER_PROMPT.md (current V2 in full), docs/DECISIONS.md, docs/ECONOMY_MODEL.md, docs/DECK_FORMAT.md, docs/AI_FORMATTER_PROMPT.md, docs/ART_PIPELINE.md, references/REFERENCE_GUIDE.md, DESIGN_STATE.md and docs/ACCEPTANCE_MATRIX.md. Visually inspect relevant reference images.
