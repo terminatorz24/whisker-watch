@@ -1,0 +1,132 @@
+[
+  {
+    "page": 3,
+    "image_index": 1,
+    "width": 800,
+    "height": 534,
+    "bytes": 951186,
+    "sha256": "509cbc63f0aa6f89678b22a1941d734568d35b4b151354bdf75783eac8fe34e9",
+    "filename": "p03-monkey-meadow-map.png",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 13,
+    "image_index": 1,
+    "width": 800,
+    "height": 534,
+    "bytes": 621343,
+    "sha256": "dce97fecfb5f0278da89e751aa6e9048c09116a870b53c691592f93d10143fa0",
+    "filename": "p13-winter-park-map.png",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 19,
+    "image_index": 1,
+    "width": 800,
+    "height": 534,
+    "bytes": 797061,
+    "sha256": "6187c4a9487455d3c24d996812afa54d68e5ebfb4eb8313d38d0d92f524b8b5d",
+    "filename": "p19-logs-map.png",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 32,
+    "image_index": 1,
+    "width": 800,
+    "height": 534,
+    "bytes": 494339,
+    "sha256": "e3bc72c62c9ab3b9f676440637b0fda7d37399d310866a7ce2f3d98283ddea41",
+    "filename": "p32-moon-landing-map.png",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 38,
+    "image_index": 0,
+    "width": 800,
+    "height": 534,
+    "bytes": 577617,
+    "sha256": "6736cfa9a407b6dc8b665e5d77f68543544f0387cc9642d25dc3e50bb90a1d58",
+    "filename": "p38-spice-islands-map.png",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 63,
+    "image_index": 0,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 168559,
+    "sha256": "c8490ca1fc0944ccc78d1debdfe08421bf56c237639a1c15baad3a4094619706",
+    "filename": "p63-map-selection.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 64,
+    "image_index": 1,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 208383,
+    "sha256": "ba16a6772c6bef8ece100080bce0564d407f5f86a9bb3497f48c9576347842e7",
+    "filename": "p64-tower-category-index.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 65,
+    "image_index": 1,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 219051,
+    "sha256": "6e517771765a9598c0e6988d7549c6f027b4463fc653559a21c964edd3dc71a3",
+    "filename": "p65-gameplay-sidebar.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 67,
+    "image_index": 0,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 235618,
+    "sha256": "e7ee4e4a76485bb537f1b8c93cbf19d5c2feb4bcfbfb393d562a726c28eaaa17",
+    "filename": "p67-gameplay-modal.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 68,
+    "image_index": 0,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 119234,
+    "sha256": "f76be35fb3f77b4853163edecebd08c0f0f5684ef21b24c71c1fc277b82cfea2",
+    "filename": "p68-difficulty-selection.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 69,
+    "image_index": 0,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 161362,
+    "sha256": "fe08b39dc384c0a939646719147dbfffcfa824ab34a2ae0a8fcec01f046814a4",
+    "filename": "p69-expert-map-selection.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 69,
+    "image_index": 1,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 176951,
+    "sha256": "e3a346ce5468e2a621697ab692730874b85406c90015f08d40260ee02897f5b3",
+    "filename": "p69-mode-selection.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  },
+  {
+    "page": 71,
+    "image_index": 1,
+    "width": 1920,
+    "height": 1080,
+    "bytes": 169051,
+    "sha256": "321ecfe50f84d1f9def83369204e9d47d8cf9854d8dcd88d63ed593646a55164",
+    "filename": "p71-magic-tower-index.jpeg",
+    "source_pdf": "BTD6_Complete_Offline_Visual_Reference.pdf"
+  }
+]
