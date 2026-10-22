@@ -28,7 +28,7 @@ MANDATORY FORMAT RULES:
 - Exactly three clearly INCORRECT but plausible and grammatically parallel wrong choices, distinct from each other and from the correct answer; do not use "All of the above", "None of the above", or multiple correct choices.
 - Each question ID must be unique. On first creation use q001, q002, ...; on revisions preserve stable IDs for existing unchanged questions and assign new unused IDs for additions. Do not silently renumber every item when one is removed.
 - Ground every correct answer in the supplied source; do not import outside facts or invent supporting statistics, dates, explanations or answers. Wrong answer alternatives may be constructed from source terminology only if their incorrectness is unambiguous. Do not disguise uncertainty with confident guesses.
-- Brief explanations must be grounded in source facts. If the source supplies no explanation, use an empty string and include the question ID in deck-level notes for follow-up; never fabricate a rationale.
+- Every accepted question must have a nonempty short explanation grounded in the provided source. If the source provides only an answer key, it is acceptable to explain that the source's answer key marks that answer correct; do not invent why. If no source support exists for even that, omit the item and add a note requesting the missing evidence.
 - If the source is ambiguous, contradicts itself, or cannot support one definite correct answer and three genuinely wrong options, OMIT that item and add a specific note stating what information is needed.
 - Generate questions from provided explanations only if the answer is directly supported by those explanations; do not convert unrelated vague text into invented trivia.
 - Use the source's headings to assign topic if possible. Otherwise omit the optional topic field. Keep the original intended meaning. Avoid answers whose length/wording trivially identifies them.
@@ -42,7 +42,7 @@ BEFORE OUTPUT, SELF-VALIDATE:
 2. Check all IDs are unique and stable.
 3. Check each question has a real question, exactly one source-supported answer and exactly 3 mutually distinct incorrect choices.
 4. Check none of the alternatives is accidentally also correct or duplicates the answer ignoring case/spacing.
-5. Check every nonempty explanation can be traced back to source content; remove unsupported explanation text.
+5. Check every required explanation is nonempty and traceable to the source, or to its supplied answer key. Omit any unsupported question instead of inventing a rationale.
 6. Check output has no HTML execution payload or control characters and properly escapes special text.
 7. Check for duplicate/near-duplicate concepts and document intentionally repeated entries.
 8. Check question counts, and warn through notes when below the desired game mode's minimum.

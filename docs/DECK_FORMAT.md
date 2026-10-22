@@ -21,7 +21,7 @@ Version: deckFormat 1, UTF-8 .json. Users can upload a local JSON file OR paste 
 
 ## Required fields
 At root: deckFormat exact 1, deckType exact multiple_choice, deckId (stable slug), questions array. Title is recommended.
-Per item: stable unique id, substantive question, nonempty answer, wrong array of exactly 3 nonempty, mutually distinct distractors all different from answer. Brief explanation is recommended and should be present only where supported by the user's source; blank explanation and warning are preferable to invented facts. Topic optional. Difficulty tier optional, no fabricated tier. All fields plain text only, no HTML execution.
+Per item: stable unique id, substantive question, nonempty answer, wrong array of exactly 3 nonempty, mutually distinct distractors all different from answer. Explanation is required as a nonempty, brief source-grounded string. If the source contains only a correct-answer key, the explanation may transparently say that the supplied key identifies the answer, without inventing a reason. If not even that is supported, omit the question and report missing source information. Topic optional. Difficulty tier optional, no fabricated tier. All fields plain text only, no HTML execution.
 
 ## Limits and repetition
 Provisional play minimum: Quick 20 entries; Full 100 entries. Technical upper bound proposal 5000 questions or 5 MiB per deck; benchmark memory and files before treating final.
@@ -30,7 +30,7 @@ If an external AI cannot make 3 clearly wrong alternatives safely for a question
 Questions can be updated or removed between waves through a simple in-game editor or AI-regenerated revised deck. Keep unchanged-ID statistics; when the prompt or answer changes materially under an existing ID, warn and safely reset that question's statistics by default, archiving previous ones so the user understands the change. Keep the active study break immutable until completed; apply revisions at a safe boundary.
 
 ## Validator
-Reject wrong root, invalid JSON, wrong deckType, missing fields, duplicate IDs, under-minimum for selected run length, over-max file/question count, invalid options, repeated answer as wrong option. Warn on duplicate or near-duplicate content, unusually long text, empty explanation or missing topic, answer-choice giveaways, unsupported characters/control codes, and suspicious markup. Provide per-question line/index and corrective wording.
+Reject wrong root, invalid JSON, wrong deckType, missing fields, duplicate IDs, under-minimum for selected run length, over-max file/question count, invalid options, repeated answer as wrong option, empty or missing explanation. Warn on duplicate or near-duplicate content, unusually long text or missing topic, answer-choice giveaways, unsupported characters/control codes, and suspicious markup. Provide per-question line/index and corrective wording.
 Preview a summary, allow row editing, Show Valid Questions, Copy Fix Report and Export Validated Deck JSON. A blocked file must not start combat. Use real schema validation and tests of malformed text, Unicode, escaped quotes, BOM, newlines, correct/incorrect answers and boundary sizes.
 Never render user-provided content as executable HTML. Use actual text rendering and escape untrusted data.
 

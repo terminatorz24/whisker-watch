@@ -14,7 +14,7 @@ Starting branch: codex/workspace-setup-2026-10-22
 7. Codex records progress in DESIGN_STATE.md. If one coding-task runtime ends, start the next task on the latest implementation branch and use prompts/02_CONTINUE.md.
 
 ## Visual asset access
-Thirteen original extracted reference image files and their source locations are committed under references/images. The full design source PDF is broader and may be supplied separately if needed; the game can start with these examples. Codex should build its own artwork. ChatGPT has Canva and Higgsfield integrations, but those connections are not guaranteed to exist inside a separate Cloud task. If absent, Codex can use SVG/code-made original game-ready assets, not a paid or blocked service.
+Thirteen original extracted reference image files and their source locations are committed under references/images. The full design source PDF is broader and may be supplied separately if needed; the game can start with these examples. Codex should build its own artwork. ChatGPT has Canva and Higgsfield integrations. In a Codex task that supports plugins, open Sources > Use plugins to inspect actual installed apps and access, but those connections are not guaranteed on every surface or environment. If absent, Codex can use SVG/code-made original game-ready assets, not a paid or blocked service.
 
 ## What the setup command validates
 Git, Node.js, npm, Python availability; source presence, reference-image count and the example JSON structure. It is not a gameplay test.
