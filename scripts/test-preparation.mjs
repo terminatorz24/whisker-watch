@@ -1,0 +1,14 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {fileURLToPath} from 'node:url';import path from 'node:path';
+import {fixtureSet} from './generate-fixtures.mjs';import {referenceSource} from './lib/reference-source.mjs';
+import {readJSON,validateDeckText} from './lib/prep-validation.mjs';import {analyze} from './economy-analysis.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),schema=readJSON(path.join(root,'schema/deck.schema.json'));
+const fixtures=fixtureSet();const base=JSON.parse(fixtures.files['valid/single-1.json']);
+const check=d=>validateDeckText(JSON.stringify(d),schema).errors;
+test('All expected fixture outcomes',()=>{for(const c of readJSON(path.join(root,'fixtures/manifest.json')).cases){const r=validateDeckText(fixtures.files[c.file],schema);assert.equal(r.errors.length===0,c.accept,c.file);}});
+test('One question and optional explanation accepted',()=>{const d=structuredClone(base);delete d.questions[0].explanation;assert.equal(check(d).length,0);d.questions[0].explanation='';assert.equal(check(d).length,0);});
+test('Factual claims are NOT validated',()=>{const d=structuredClone(base);d.questions[0].answer='arbitrary owner-provided answer';assert.equal(check(d).length,0);});
+test('5000 accepted and 5001 rejected',()=>{const d=structuredClone(base);d.questions=Array.from({length:5000},(_,i)=>({...base.questions[0],id:`stress-${i}`}));assert.equal(check(d).length,0);d.questions.push({...base.questions[0],id:'extra'});assert.ok(check(d).length);});
+test('Oversized raw input rejected before parse',()=>assert.ok(validateDeckText(' '.repeat(5*1024*1024+1),schema).errors.length));
+test('Case/space equivalent answer rejected',()=>{const d=structuredClone(base);d.questions[0].answer='Cat';d.questions[0].wrong[0]=' cAt ';assert.ok(check(d).length);});
+test('Question schedules and money scenarios reproducible',()=>{assert.equal(analyze('full',.8).attempts,895);assert.equal(analyze('quick',.8).attempts,108);assert.equal(analyze('full',0).expectedStudy,0);assert.deepEqual(analyze('quick',.8),analyze('quick',.8));assert.ok(analyze('full',.95).expectedStudy>analyze('full',.8).expectedStudy);});
+test('Original reference HTML reconstructed exactly',()=>{const r=referenceSource(root);assert.equal(r.html.length,99803);assert.equal((r.html.toString().match(/class="card item"/g)??[]).length,129);});

@@ -1,39 +1,18 @@
-# ONE STUDY DECK FORMAT — MULTIPLE CHOICE JSON
-Version: deckFormat 1, UTF-8 .json. Users can upload a local JSON file OR paste raw JSON directly into the game's import panel. Source PDFs/notes never go directly into the game; an external AI converts the user's source into this valid file. The SAVE format also uses .json but is a separately versioned, self-contained object with a different root identifier.
+# Study deck contract — JSON only
+Contract: deckFormat 1, deckType multiple_choice, UTF-8 .json. Authoritative structure: schema/deck.schema.json. File validation checks syntax and shape, NOT factual accuracy. The supplied answer string is the answer key.
 
-## Canonical structure
-{
-  "deckFormat": 1,
-  "deckType": "multiple_choice",
-  "deckId": "biology-exam-1",
-  "title": "Biology Exam One",
-  "questions": [
-    {
-      "id": "q001",
-      "topic": "Cell biology",
-      "question": "Which structure is responsible for most ATP production in a eukaryotic cell?",
-      "answer": "Mitochondrion",
-      "wrong": ["Lysosome", "Golgi apparatus", "Nucleolus"],
-      "explanation": "The source material identifies mitochondria as the main site of aerobic ATP production."
-    }
-  ]
-}
-
-## Required fields
-At root: deckFormat exact 1, deckType exact multiple_choice, deckId (stable slug), questions array. Title is recommended.
-Per item: stable unique id, substantive question, nonempty answer, wrong array of exactly 3 nonempty, mutually distinct distractors all different from answer. Explanation is required as a nonempty, brief source-grounded string. If the source contains only a correct-answer key, the explanation may transparently say that the supplied key identifies the answer, without inventing a reason. If not even that is supported, omit the question and report missing source information. Topic optional. Difficulty tier optional, no fabricated tier. All fields plain text only, no HTML execution.
+## Fields
+Root required: deckFormat=1, deckType="multiple_choice", deckId (stable lowercase slug), questions (1..5000 entries). Optional: title, notes (strings). Question required: id (stable unique string), question (nonblank string), answer (nonblank string), wrong (exactly 3 nonblank distinct strings). Optional: explanation (string, including empty), topic, tier (integer 1..5), reviewStats.
+Explanations are optional in the schema, formatter, templates and UI. If absent/empty, play is allowed and UI omits the explanation area. No source-citation requirements or factual verifier. Do not block a deck because the game cannot verify its statements.
+reviewStats, when exported, contains nonnegative integer correct/incorrect/skipped/seen counters. The same format can reimport a study report. A new run ignores these counters by default and may explicitly import them as historical review only; never award money, alter current streak, or treat a deck as a resumable save.
 
 ## Limits and repetition
-Provisional play minimum: Quick 20 entries; Full 100 entries. Technical upper bound proposal 5000 questions or 5 MiB per deck; benchmark memory and files before treating final.
-A deck with 30 unique source questions can deliberately contain repeated formulations to meet Full's entry minimum, but repetitions must reuse the source truth, remain explicitly authorized by the deck maker, and have distinct question IDs. Near-duplicates should be warned about rather than automatically deleted. The selector should avoid duplicates during a single break when possible. Aggregate the same concept's outcomes intelligently for reports, and always preserve individual stable IDs for save-revision matching.
-If an external AI cannot make 3 clearly wrong alternatives safely for a question from the supplied material, it omits that question and lists the missing input in its companion response. Never invent supporting facts, answers, statistics or explanations. No silent auto-padding unless repetition was requested.
-Questions can be updated or removed between waves through a simple in-game editor or AI-regenerated revised deck. Keep unchanged-ID statistics; when the prompt or answer changes materially under an existing ID, warn and safely reset that question's statistics by default, archiving previous ones so the user understands the change. Keep the active study break immutable until completed; apply revisions at a safe boundary.
+One valid question is sufficient for either run length. Warn below recommended 20 for Quick / 100 for Full. Questions repeat automatically; never ask users to clone source questions to reach a quota. Empty decks block play. Max 5000 questions and 5 MiB UTF-8 file. Max question 4000 characters, correct/wrong option 2000 each, explanation 8000, topic/title 200. The browser checks bytes before parsing. These safety ceilings are not factual tests.
+Reject duplicate IDs, answer equal to a wrong choice or duplicate wrong choices after Unicode NFC + trim + case-insensitive comparison. Duplicate content with different IDs is only a warning. Preserve plain text, line breaks and Unicode; never execute/import text as HTML or code. Unknown keys produce a warning and are not merged into internal prototypes/state. Reject prototype-pollution keys during normalization. JSON duplicate object keys should be rejected or explicitly diagnosed by the parser, not silently reinterpreted.
 
-## Validator
-Reject wrong root, invalid JSON, wrong deckType, missing fields, duplicate IDs, under-minimum for selected run length, over-max file/question count, invalid options, repeated answer as wrong option, empty or missing explanation. Warn on duplicate or near-duplicate content, unusually long text or missing topic, answer-choice giveaways, unsupported characters/control codes, and suspicious markup. Provide per-question line/index and corrective wording.
-Preview a summary, allow row editing, Show Valid Questions, Copy Fix Report and Export Validated Deck JSON. A blocked file must not start combat. Use real schema validation and tests of malformed text, Unicode, escaped quotes, BOM, newlines, correct/incorrect answers and boundary sizes.
-Never render user-provided content as executable HTML. Use actual text rendering and escape untrusted data.
+## Revision behavior
+Stable deckId + stable question IDs match revisions. Preserve stats only when canonical question/answer/distractor content is unchanged; topic/explanation-only edits may retain stats. Material changes show a reset/archive preview; removals archive old stats, additions start at zero. Apply only after current study set and pending answer reward have completed. A different deckId starts a new run or requires an explicit deck-switch action, never silent replacement. The save always embeds the exact active revision.
 
-## Accessibility and file handling
-Give Download Sample JSON, Copy Formatting Instructions, Upload Deck File, Paste JSON, Import/Validate and Download Edited Deck. Explain copy/paste workflow in a single short screen. Do not tell users that putting JSON into a word processor and saving an ordinary document makes a playable file; they can paste the raw text directly into the game or download the original AI-generated .json.
-Questions appear as four shuffled A-D options; seeded questions RNG ensures stable save/replay, and the answer reveal shows the correct answer and any source-grounded explanation.
+## User workflow
+Download Template / Copy AI Instructions -> external AI produces JSON -> Upload File or Paste JSON -> Validate -> preview/fix -> Play. Same file rules for both input routes. Copy a malformed-file error report for repair; no general PDF/CSV/Markdown importer. A JSON filename in a Google Doc does not change its file format; users can copy the raw JSON text from a document and paste it into the game's JSON input.
+The three-question template is playable with a small-deck warning. The 30- and 120-question synthetic demo files are for development and an optional Demo button, never hardcoded replacements for player content.

@@ -1,9 +1,3 @@
-# Codex prompts for Whisker Watch V2
-00_WORKSPACE_CHECK.md — mandatory initial environment/source/connector audit, not implementation.
-01_START_AUTONOMOUS_BUILD.md — use this in Codex Cloud; it MUST start with the preflight report and owner approval checkpoint. It does not authorize code before APPROVE BUILD.
-02_CONTINUE.md — resume on the latest working implementation branch, verifying approval recorded in DESIGN_STATE.md.
-03_ART_ASSET_PASS.md — independent original-art production/review.
-04_FIX_PLAYTEST_FEEDBACK.md — specific fixes and test regressions.
-05_RELEASE_AUDIT.md — full game audit and release package without public deployment.
-
-**Always follow docs/PREFLIGHT_ACCESS_CHECK.md before the FIRST game code**. Show the owner access results, report any missing optional tools and ask "APPROVE BUILD?" then stop. After the owner approves, Codex may advance through routine stages without further per-phase approvals. Public release needs separate owner permission.
+# Task entry points
+Start with 00_PREFLIGHT_AND_APPROVAL.md from main. 00_WORKSPACE_CHECK.md is a compatibility redirect to that same gate.
+After explicit APPROVE BUILD, execute 01_START_AUTONOMOUS_BUILD.md. Resume with 02_CONTINUE.md on the latest persisted implementation branch. Focused art/feedback/release passes are 03/04/05. None bypasses initial access, visual-direction or publication approvals. All product details live in the authoritative docs, not duplicated inside every prompt.

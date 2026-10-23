@@ -1,2 +1,2 @@
-# Fix owner playtest feedback
-Read active V2 requirements, DESIGN_STATE.md, the reported feedback and real source code. Reproduce concrete bugs where possible; classify study, economy, combat, art, save, balance and device issues. Fix the authorized problems, run regressions and engine-based balance scenarios when relevant, update actual evidence/screenshots and project state, then continue ordinary implementation. Preserve the other working systems. Do not publicly deploy without approval.
+# Fix supplied playtest feedback
+Read AGENTS.md, active product requirements and current state. Reproduce the reported problem, separate behavior/balance/art/device issues, fix only authorized scope, add a regression and preserve save compatibility. Show actual before/after evidence and unverified cases. Continue ordinary work after fixes, but do not bypass unresolved visual acceptance or publishing permission.

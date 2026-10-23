@@ -1,2 +1,2 @@
-# Mandatory pre-build workspace and access check
-Before any initial Whisker Watch game code, read AGENTS.md and docs/PREFLIGHT_ACCESS_CHECK.md and perform the complete Codex Cloud audit: exact V2 branch/source and image access, actual GitHub read/write/push, local dev environment/tools, ability to create original art, and real Canva/Higgsfield/browser access. Show a table with evidence, missing optional resources, and exact required setup steps. Then explicitly ASK THE OWNER FOR APPROVAL and STOP. Do not write game code or install game dependencies until the owner responds APPROVE BUILD after the audit. The original startup prompt is not approval.
+# Workspace check
+Follow prompts/00_PREFLIGHT_AND_APPROVAL.md and docs/PREFLIGHT_ACCESS_CHECK.md. This compatibility entry point is READ-ONLY and must stop for owner approval. It does not authorize gameplay code.

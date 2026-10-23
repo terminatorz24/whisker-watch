@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:whisker-watch:save-envelope:1",
+  "title": "Save envelope ONLY; strict nested schemas must be implemented in M1",
+  "type": "object",
+  "required": [
+    "fileType",
+    "saveFormat",
+    "gameVersion",
+    "engineRulesVersion",
+    "contentVersion",
+    "contentHash",
+    "exportedAt",
+    "deck",
+    "settings",
+    "learning",
+    "run"
+  ],
+  "properties": {
+    "fileType": {
+      "const": "whisker-watch-save"
+    },
+    "saveFormat": {
+      "const": 1
+    },
+    "gameVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "engineRulesVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "contentVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "contentHash": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "exportedAt": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "deck": {
+      "$ref": "urn:whisker-watch:deck:1"
+    },
+    "settings": {
+      "type": "object"
+    },
+    "learning": {
+      "type": "object"
+    },
+    "run": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,70 +1,27 @@
-# PROVISIONAL ECONOMY ANALYSIS — NOT ACTUAL GAME BALANCE TESTS
-Date: 2026-10-22. All monetary values are initial modeling assumptions pending implementation and engine-level testing.
+# Economy hypotheses and reproducible evidence
+WW-HANDOFF-3. Numbers are starting hypotheses, NOT final combat balance. The old handoff claimed Monte Carlo results without a checked-in reproduction script. This revision replaces that evidence with scripts/economy-analysis.mjs and actual deterministic output in reports/economy-planning.json.
 
-## Goal
-Defeating enemies should generate enough in-wave cash to make mid-wave strategy meaningful. Answering questions must remain the dominant income source. No unlimited passive farming. Correct answers should provide a meaningful cumulative advantage while a player with lower accuracy can still learn and attempt waves.
+## Method
+Run node scripts/economy-analysis.mjs. A finite-state distribution tracks correct streaks0..20 and computes expected study payouts under independent answer accuracy. It is not Monte Carlo or a combat simulator. It assumes every wave hypothetically clears and all planned enemy units pay, excludes starting cash, purchases, sale losses, leaks/failure, economic cats and strategy. Conditional income is not a win-rate or affordability claim.
 
-## Study frequency
-Full Campaign 100 waves: Q=5 for 1-20, 7 for 21-40, 9 for 41-60, 11 for 61-80, 12 for 81-100; +3 questions on waves 20/40/60/80/100. Total 895 scheduled answers.
-Quick Run 40 waves: Q=2 for 1-20, 3 for 21-40; +2 on waves 10/20/30/40. Total 108 scheduled answers.
-The user prefers more than 3/4/5 questions in the full campaign. Both schedules are adjustable after real session-length playtests. No countdown between waves or answering during combat.
+## Starting rules
+Full100 waves:5/7/9/11/12 questions across successive20-wave bands,+3 at waves20/40/60/80/100 =895 attempts. Quick40:2 through20,3 after,+2 at10/20/30/40 =108. Small decks repeat automatically; these are attempts, not required unique entries.
+B(n)=250*1.03^(n-1) Full, boss multiplier1.20; Quick250*1.04^(n-1), boss1.15. Correct base=B/Q; wrong/skip0. Apply streak AFTER a correct increment:3-4 +5%,5-9 +10%,10-19 +15%,20+ +20%. Wrong/skip resets. This multiplies the answer payout, not the cash balance.
+Full-clear enemy pool=.37B, clear-wave bonus=.06B. Combat pays irreversible defeat/layer events with unique receipts. Precompute economic lineage budgets; descendants, Regrow, boss adds/resurrection and repeated damage must not mint extra money. Finite boss-add budgets and leaked/unremoved-layer handling must be defined and tested in the real engine.
+Scholar extra <=10%B from correct answers only; Fisher extra <=5%B from actual combat payouts. No unrestricted passive farms. Buying/selling cannot recalculate previous rewards.
+Start650; Easy/Normal/Hard lives200/150/100, prices.85/1/1.08, speeds.9/1/1.15. Sell70% of actual total paid; one explicit integer-subunit rounding rule. Tune all numbers together with real tower costs and threat.
 
-## Starting wave budgets
-Full: B(n) = 250 * (1.03 ** (n-1)) * (1.20 for boss waves, otherwise 1).
-Quick: B(n) = 250 * (1.04 ** (n-1)) * (1.15 for boss waves, otherwise 1).
-These are cash budgets, not rewards automatically given to the player.
-Base value per correctly answered question = B(n)/Q(n). Incorrect or skipped gets zero. Total answer income may exceed B because of a bounded correct-answer streak and eligible Scholar effects.
-Streak multiplier on each correct answer: 1x until streak 3, 1.05x at 3-4, 1.10x at 5-9, 1.15x at 10-19, 1.20x at >=20. A wrong or skipped question resets streak. The streak is global to the current run and persists across breaks, and is stored in saves.
-Target combat pop pool per wave, if all planned pop units destroyed = 0.37 * B(n). Target round-clear bonus = 0.06 * B(n). Actual pop revenue depends on real kills; no cash for leaks or repeated processing of child spawns; no infinitely farming boss adds. End-of-wave bonus is earned only when the wave clears. The numerical pop ratios will be tuned to static wave composition and tower costs.
+## Actual conditional calculation
+| Mode | Accuracy | Expected study cash | Conditional total | Study share |
+| --- | --- | ---: | ---: | ---: |
+| Quick |60%|14864.73|25261.63|58.8%|
+| Quick |80%|20479.10|30876.00|66.3%|
+| Quick |95%|25983.22|36380.11|71.4%|
+| Full |60%|94585.92|160721.40|58.9%|
+| Full |80%|130405.58|196541.06|66.4%|
+| Full |95%|165974.91|232110.40|71.5%|
+At0% study income is0 and hypothetical combat+clear is43%B. That does NOT prove an answer-skipping player can clear later waves. At80% studying supplies roughly two-thirds of modeled income, supporting only an initial funding mix.
 
-## How combat income is calculated without exploits
-Compute the static round's total economic-pop-unit budget offline from the actual enemy chain, including descendants and boss/minion events. Assign payouts to irreversible pop/removal events so each is paid once, and cap boss/minion special income against the statically allocated pool. Avoid one coin per boss HP damage tick and no repeated payout when a weak rat spawns again. For a given wave, full kill yields the pool, while leaks yield less. Never inflate income when enemies are spawned due to abilities or a vulnerability effect.
-Any economy-enhancing cat stacks under a shared bound. Initial test proposal: total Scholar extra cash <= +10% of the base per-wave study pool; total Fisher bonus <= +5% of the base per-wave pool, earned only from actual combat pops and never as unbounded passive money. Implement and test concrete effect paths.
-
-## Preliminary calculation — reproducible assumptions
-Numerical study model only (no tower combat), using independent correct probabilities of 0.60, 0.80, 0.95; 2,500 seeded Monte Carlo sessions per mode and accuracy. On every modeled wave, it ASSUMES all enemies are killed and every round is cleared, so pop/clear amounts are upper bounds, not forecasts of player success. Does not include starting cash, tower purchases/sell losses, special cat bonuses, missed boss clears, or retry mechanics. Study streak persists across waves; boss budgets already include modest increase.
-
-| Mode | Accuracy | Study earnings avg | Full-clear pop money | Wave-clear money | Max modeled gross earned | Study share |
-| --- | --- | ---: | ---: | ---: | ---: | ---: |
-| Full | 60% | 94,704 | 56,907 | 9,228 | 160,840 | 58.9% |
-| Full | 80% | 130,445 | 56,907 | 9,228 | 196,580 | 66.4% |
-| Full | 95% | 165,967 | 56,907 | 9,228 | 232,102 | 71.5% |
-| Quick | 60% | 14,863 | 8,946 | 1,451 | 25,260 | 58.8% |
-| Quick | 80% | 20,485 | 8,946 | 1,451 | 30,882 | 66.3% |
-| Quick | 95% | 26,009 | 8,946 | 1,451 | 36,406 | 71.4% |
-
-Full model base pool including boss multipliers totals ~153,803. Quick totals ~24,179. Under 0% answers and complete hypothetical wave clears, study rewards and streaks are zero and only ~43% of the base pool is accessible: this is an upper bound, not evidence the player can actually clear hard rounds without answering.
-
-Selected Full checkpoints, rounded:
-| Wave | Questions | Pool B | Base per correct | Full-clear pop pool | Clear bonus |
-| 1 | 5 | 250 | 50 | 92 | 15 |
-| 20 boss | 8 | 526 | 66 | 195 | 32 |
-| 40 boss | 10 | 950 | 95 | 352 | 57 |
-| 60 boss | 12 | 1,716 | 143 | 635 | 103 |
-| 80 boss | 14 | 3,099 | 221 | 1,147 | 186 |
-| 100 boss | 15 | 5,598 | 373 | 2,071 | 336 |
-
-## Initial difficulty parameters — test, do not assume balance
-Easy: 200 lives; 0.85x tower/upgrade costs; 0.90x enemy speed.
-Normal: 150 lives; 1.00x costs; 1.00x speed.
-Hard: 100 lives; 1.08x costs; 1.15x speed.
-All begin with 650 cash. Changing study rewards by difficulty is discouraged initially; tower price, speed, enemy tuning and lives already vary.
-Starting sell refund proposal: 0.70 * (actual base tower cost paid + all upgrade costs paid), including purchase difficulty adjustments. No relocation without selling. Cash cannot be duplicated by upgrade/sell cycles.
-
-## Why these are NOT a validated economy
-The numbers above do NOT include enemy health, enemy speed, routes, DPS, crowd control, tower price curves, accessibility of economic towers, boss phases, wave duration, leaks, end-state cash accumulation or human strategy. They cannot prove fairness or survivability. A price/health scenario can defeat an 80%-correct player despite plenty of cumulative theoretical cash.
-
-## Mandatory engine-balance validation for Codex
-1. Generate static Quick and Full waves and their true economic pop units. Verify maximum pop payouts sum to the configured pool and no reward on leaks, duplicated children, respawns or repeatedly damaged boss HP.
-2. Same deterministic engine in live game and batch simulator. Evaluate 0%, 60%, 80%, 95% correct. Include incorrect streak breaks and repeat-question scheduling. Include 20-entry, 30-entry padded/repetitive, 100-entry and 5000-entry decks.
-3. At least three strategies: early cheap build, mixed counters, late-game specialization; at least one deliberately suboptimal strategy. Every difficulty, Quick and Full; representative easiest and hardest maps.
-4. Report per wave: earned answer/pop/clear cash, cash remaining, towers/upgrades purchased, estimated/actual DPS vs effective enemy threat, leaks/lives lost, defense time, bosses defeated, and efficiency of Scholar/Fisher.
-5. Flag dead zones where even skilled players lack a feasible defense, triviality at low accuracy, runaway banked cash, too-slow/too-fast gameplay, economic-tower exploits, inability to afford needed detection, and disproportionate duplicate-deck advantage.
-6. Tune only config and authored content, document before/after run results, and inspect gameplay to confirm cash and enemy pacing FEEL fair. Do not claim PASS until tested.
-7. Add robust deterministic replay tests and property tests of total pop income and 70% resale.
-
-## BTD6 reference distinction
-BTD6 uses pop/round revenue and reduced late-round pop income. Whisker Watch can use this ECONOMIC PRINCIPLE but does not import proprietary balance tables, map art or unique game expression. Reference background:
-- https://bloons.fandom.com/wiki/Rounds_%28BTD6%29
-- https://bloons.fandom.com/wiki/Standard_Mode
-- https://store.steampowered.com/app/960090/Bloons_TD_6/
+## Required actual-engine evidence
+Use the SAME deterministic engine as the game, not a guessed DPS spreadsheet. Test0%,25% random guessing,60%,80%,95%,100%; both lengths/difficulties; several seeds; cheap/mixed/specialized and weak strategies; every map's constraints. Test1/19/30/99/120/5000-entry decks, duplicates, clustered misses and long streaks. Log per-wave income sources, purchases, upgrades, cash/lives/leaks, boss state and duration, counter availability, no-study exploits, rounding and save-reload double-pay.
+At M2 measure session length. Ten seconds per answer means18 minutes Quick or149 minutes Full studying alone; combat and feedback add time. Adjust recorded tuning values rather than secretly reducing study emphasis. A bot losing does not prove every build is impossible; a bot winning does not prove fun. Store seeds, config/content hashes, actual commands and outputs. Gameplay balance remains NOT IMPLEMENTED until those tests run.
